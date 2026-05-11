@@ -353,11 +353,8 @@ section { padding: 96px 0; }
    ABOUT
 ═══════════════════════════════════════════════════════════ */
 #about { background: var(--bg-alt); }
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
+.about-text {
+  max-width: 720px;
 }
 .about-text .section-subtitle { max-width: 100%; }
 .about-text p {
@@ -368,34 +365,6 @@ section { padding: 96px 0; }
   margin-top: 1.25rem;
 }
 .about-text p + p { margin-top: 0.85rem; }
-
-.about-image-wrap { position: relative; }
-.about-image-placeholder {
-  aspect-ratio: 4/5;
-  background: var(--bg);
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  overflow: hidden;
-  position: relative;
-}
-.about-image-placeholder img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.about-image-wrap::before {
-  content: '';
-  position: absolute;
-  bottom: -16px;
-  right: -16px;
-  width: 60%;
-  height: 60%;
-  border: 2px solid var(--accent);
-  border-radius: 8px;
-  z-index: 0;
-  pointer-events: none;
-}
-.about-image-placeholder { z-index: 1; position: relative; }
 
 /* ═══════════════════════════════════════════════════════════
    REVIEWS
@@ -471,54 +440,6 @@ section { padding: 96px 0; }
   color: rgba(255,255,255,0.5);
 }
 
-
-/* ═══════════════════════════════════════════════════════════
-   GALLERY
-═══════════════════════════════════════════════════════════ */
-#gallery { background: var(--bg); }
-.gallery-header { margin-bottom: 2.5rem; }
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
-.gallery-item {
-  border-radius: 6px;
-  overflow: hidden;
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  position: relative;
-}
-.gallery-item:first-child {
-  grid-column: span 2;
-}
-.gallery-item:nth-child(4) {
-  grid-column: span 2;
-}
-
-.gallery-item {
-  aspect-ratio: 4/3;
-}
-.gallery-item:first-child,
-.gallery-item:nth-child(4) {
-  aspect-ratio: 16/9;
-}
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.45s ease;
-}
-.gallery-item:hover img { transform: scale(1.04); }
-.gallery-item::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(42,79,79,0);
-  transition: background 0.3s;
-}
-.gallery-item:hover::after { background: rgba(42,79,79,0.12); }
 
 /* ═══════════════════════════════════════════════════════════
    CONTACT
@@ -620,14 +541,8 @@ footer {
    RESPONSIVE
 ═══════════════════════════════════════════════════════════ */
 @media (max-width: 900px) {
-  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .about-image-wrap { max-width: 480px; }
-  .about-image-wrap::before { display: none; }
   .reviews-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-  .gallery-item:first-child { grid-column: span 2; }
-  .gallery-item:nth-child(4) { grid-column: span 2; }
 }
 
 @media (max-width: 700px) {
@@ -648,9 +563,6 @@ footer {
   .hero-content { margin-left: 0; }
   section { padding: 72px 0; }
   .services-grid { grid-template-columns: 1fr 1fr; }
-  .gallery-grid { grid-template-columns: 1fr; }
-  .gallery-item:first-child,
-  .gallery-item:nth-child(4) { grid-column: span 1; }
   .footer-meta { text-align: left; }
 }
 
